@@ -1,0 +1,30 @@
+Problem statement
+
+    The app when it comes up will have 2 users created in the system -
+        user1@gmail.com with password user1ABC
+        user2@gmail.com with password user2ABC
+
+    user1@gmail.com cant login but user2@gmail.com can
+
+    You can use the try it out feature on the swagger page with for the /login API to simulate this.Alternately you can use any choice of REST client for the same.
+
+    The output expected out of this is as follows
+        Debug why the login for user1@gmail.com fails.
+        Once the bug is discovered fix it and submit the assignment via git
+
+
+*****************************Solution*******************************
+When we trying to login using user1@gmail.com login gets fails and console shows the error as
+"query did not return a unique result: 2; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 2",
+  "path": "/user/login"  .."
+  
+  because in database there are 2 entries with same name and same password,when we install and setup the all project and run 
+  it as boot application then it create 3 database entry by default user1@gmail.com created two times
+  thats why it fails to login
+
+  If we remove the duplicate entry form file db.changelog-1.0.xml and again run the application as Spring boot app then user 
+  can login successfully...
+  
+  Issue find and fix successfully
+  
+  
